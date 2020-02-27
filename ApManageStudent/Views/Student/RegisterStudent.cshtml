@@ -1,0 +1,52 @@
+﻿
+@model ApManageStudent.Models.Student
+
+@{
+    ViewBag.Title = "RegisterStudent";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>RegisterStudent</h2>
+
+<br />
+<fieldset>
+    <legend>Student Registration </legend>
+    <p>Please enter the following information to register</p>
+    <br />
+    <form action="@Url.Action("RegisterStudent", "Student")" method="post" class="form-horizontal">
+        <div class="row">
+            <div class="col-sm-6">
+                @Html.LabelFor(m => m.TypeStudent, new { @class = "control-label" })
+                @Html.DropDownListFor(m => m.TypeStudent
+                    , EnumHelper.GetSelectList(typeof(ApManageStudent.Models.Enumerators.TypeStudent))
+                    , "Select", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.TypeStudent, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-sm-6">
+                @Html.LabelFor(m => m.Name, new { @class = "control-label" })
+                @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                @Html.LabelFor(m => m.Gender, new { @class = "control-label" })
+                @Html.DropDownListFor(m => m.Gender
+                    , EnumHelper.GetSelectList(typeof(ApManageStudent.Models.Enumerators.Gender))
+                    , "Select", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Gender, "", new { @class = "text-danger" })
+            </div>
+          
+        </div>
+      
+       
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <br />
+                <button type="submit" class="btn btn-primary">Send Form</button>
+            </div>
+        </div>
+    </form>
+
+</fieldset>
+

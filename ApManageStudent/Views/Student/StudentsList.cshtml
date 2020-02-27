@@ -1,0 +1,76 @@
+﻿@model List<ApManageStudent.Models.Student>
+
+@{
+    ViewBag.Title = "StudentsList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>StudentsList</h2>
+
+<!--Un poco de refactoring-->
+<div class="row">
+    <div class="col-sm-12 text-right">
+        <a class="btn btn-primary"
+           href="@Url.Action(
+          "RegisterStudent", 
+          "Student")">
+            Register
+        </a>
+        <br />
+        <hr />
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <table class="table table-responsive table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th class="text-center">Type Student</th>
+                    <th class="text-center">Name</th>
+                    <th class="text-center">Gender</th>
+                    <th class="text-center">Last Modidy Date</th>                    
+                    <th class="text-center">Acccion(es)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var studentModel in Model)
+                {
+                <tr>
+
+                    <td>@studentModel.TypeStudent</td>
+                    <td>@studentModel.Name</td>
+                    <td>@studentModel.Gender</td>
+                    <td>@studentModel.LastConection</td>
+                  
+                    <td class="text-center">
+
+                        <a class="btn btn-success"
+                           href="@Url.Action(
+                    "StudentDetail",
+                    "Student",
+                    new { id = studentModel.Id })">
+                            Detail
+                        </a>
+                        <a class="btn btn-success"
+                           href="@Url.Action(
+                    "ModifyStudent",
+                    "Student",
+                    new { Id = studentModel.Id })">
+                            Modify
+                        </a>
+                        <a class="btn btn-danger"
+                           href="@Url.Action(
+                    "DeleteStudent",
+                    "Student",
+                    new { Id = studentModel.Id })">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

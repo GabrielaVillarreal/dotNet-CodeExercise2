@@ -1,0 +1,27 @@
+﻿@model ApManageStudent.Models.Student
+
+@{
+    ViewBag.Title = "DeleteStudent";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete Student</h2>
+
+
+<p> Are you sure to delete the student?</p>
+<h5>Id: @Model.Id </h5>
+<h5>Name: @Model.Name </h5>
+<h5>Modify Date: @Model.LastConection</h5>
+<form action="@Url.Action("DeleteStudent","Student")" method="post">
+    @Html.HiddenFor(m => m.Id)
+   
+    <div class="row">
+        <div class="col-sm-12 text-center">
+            <button type="submit" class="btn btn-primary">Accept</button>
+            <a class="btn btn-danger" href="@Url.Action("StudentsList","Student")">Cancel</a>
+        </div>
+    </div>
+</form>
+
+
+
